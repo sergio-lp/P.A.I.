@@ -1,0 +1,59 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0097a7"
+    android:padding="16dp"
+    tools:context="unicamp.br.prevencaodeacidentes.activities.MainActivity">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="46dp"
+                android:layout_height="56dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                android:shadowColor="#000"
+                android:shadowDx="-2"
+                android:shadowDy="2"
+                android:shadowRadius="1.3"
+                android:src="@drawable/leftwards_2" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/acme"
+                android:shadowColor="#000"
+                android:shadowDx="-2"
+                android:shadowDy="2"
+                android:shadowRadius="1.3"
+                android:text="Telefones"
+                android:textColor="#FFF"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                android:typeface="normal" />
+
+        </RelativeLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</ScrollView>

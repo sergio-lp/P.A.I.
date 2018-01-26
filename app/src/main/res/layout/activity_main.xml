@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0097a7"
+    tools:context="unicamp.br.prevencaodeacidentes.activities.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="36dp"
+                android:fontFamily="@font/acme"
+                android:shadowColor="#000"
+                android:shadowDx="-2"
+                android:shadowDy="2"
+                android:shadowRadius="1.3"
+                android:text="Prevenção de Acidentes"
+                android:textColor="#FFF"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                android:typeface="normal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTitle"
+                android:orientation="vertical">
+
+                <unicamp.br.prevencaodeacidentes.models.CustomButton
+                    android:id="@+id/btn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    app:image="@drawable/fire"
+                    app:txt="Queimaduras" />
+
+                <unicamp.br.prevencaodeacidentes.models.CustomButton
+                    android:id="@+id/btn2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="26dp"
+                    app:image="@drawable/high_voltage"
+                    app:txt="Choques" />
+
+                <unicamp.br.prevencaodeacidentes.models.CustomButton
+                    android:id="@+id/btn3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="26dp"
+                    app:image="@drawable/biohazard_samsung"
+                    app:txt="Intoxicações" />
+
+                <unicamp.br.prevencaodeacidentes.models.CustomButton
+                    android:id="@+id/btn4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="26dp"
+                    app:image="@drawable/baby_bottle"
+                    app:txt="Engasgo" />
+
+                <unicamp.br.prevencaodeacidentes.models.CustomButton
+                    android:id="@+id/btn5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="26dp"
+                    app:image="@drawable/telephone"
+                    app:txt="Telefones úteis" />
+
+                <unicamp.br.prevencaodeacidentes.models.CustomButton
+                    android:id="@+id/btn6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="26dp"
+                    app:image="@drawable/information"
+                    app:txt="Sobre o app" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,148 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0097a7"
+    android:padding="16dp"
+    tools:context="unicamp.br.prevencaodeacidentes.activities.MainActivity">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="46dp"
+                android:layout_height="56dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                android:shadowColor="#000"
+                android:shadowDx="-2"
+                android:shadowDy="2"
+                android:shadowRadius="1.3"
+                android:src="@drawable/leftwards_2" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/title_about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/acme"
+                android:shadowColor="#000"
+                android:shadowDx="-2"
+                android:shadowDy="2"
+                android:shadowRadius="1.3"
+                android:text="Sobre o app"
+                android:textColor="#FFF"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                android:typeface="normal" />
+
+            <ImageButton
+                android:id="@+id/unicamp_logo"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_below="@id/title_about"
+                android:scaleType="centerCrop"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/unicamp" />
+
+            <TextView
+                android:id="@+id/tv_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/unicamp_logo"
+                android:layout_marginBottom="16dp"
+                android:text="Aplicativo desenvolvido como parte do projeto de iniciação científica do segundo semestre do ProFIS."
+                android:textColor="#FFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_professor_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_about"
+                android:layout_marginBottom="8dp"
+                android:text="Professor orientador"
+                android:textAlignment="center"
+                android:textColor="#FFF"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_professor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_professor_title"
+                android:layout_marginBottom="16dp"
+                android:text="Profª Doutora Maira Deguer Misko"
+                android:textColor="#FFF" />
+
+            <TextView
+                android:id="@+id/tv_members_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_professor"
+                android:layout_marginBottom="8dp"
+                android:text="Autores"
+                android:textAlignment="center"
+                android:textColor="#FFF"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_members"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_members_title"
+                android:layout_marginBottom="16dp"
+                android:text="Letícia Mansano de Souza\nMariana Moreira\nSérgio Lourenço Polo Filho\nSharlla Nogueira"
+                android:textColor="#FFF" />
+
+            <ImageButton
+                android:id="@+id/document_icon"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_below="@id/tv_members"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="26dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/document" />
+
+            <TextView
+                android:id="@+id/tv_article"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/document_icon"
+                android:layout_marginBottom="8dp"
+                android:text="Ver o artigo completo"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:textAlignment="center"
+                android:textColor="#FFF"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</ScrollView>
