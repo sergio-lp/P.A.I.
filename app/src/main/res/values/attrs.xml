@@ -1,9 +1,4 @@
 <resources>
-
-    <!-- Declare custom theme attributes that allow changing which styles are
-         used for button bars depending on the API level.
-         ?android:attr/buttonBarStyle is new as of API 11 so this is
-         necessary to support previous API levels. -->
     <declare-styleable name="ButtonBarContainerTheme">
         <attr name="metaButtonBarStyle" format="reference" />
         <attr name="metaButtonBarButtonStyle" format="reference" />
@@ -12,6 +7,18 @@
     <declare-styleable name="CustomButton">
         <attr name="txt" format="string" />
         <attr name="image" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomButtonCircle">
+        <attr name="txt_circle" format="string" />
+        <attr name="image_circle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomRadioGroup">
+        <attr name="answer_1" format="string" />
+        <attr name="answer_2" format="string" />
+        <attr name="answer_3" format="string" />
+        <attr name="correct" format="reference" />
     </declare-styleable>
 
 </resources>

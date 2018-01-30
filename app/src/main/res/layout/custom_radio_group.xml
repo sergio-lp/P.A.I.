@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/radiogroup_custom"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_container_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <net.igenius.customcheckbox.CustomCheckBox
+                android:id="@+id/checkbox_1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                app:color_checked="#FFF"
+                app:color_tick="@color/background"
+                app:color_unchecked="@color/background"
+                app:color_unchecked_stroke="#FFF" />
+
+            <TextView
+                android:id="@+id/tv_answer_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/acme"
+                android:text="Exemple text 1"
+                android:textColor="#FFF"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_container_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <net.igenius.customcheckbox.CustomCheckBox
+                android:id="@+id/checkbox_2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                app:color_checked="#FFF"
+                app:color_tick="@color/background"
+                app:color_unchecked="@color/background"
+                app:color_unchecked_stroke="#FFF" />
+
+            <TextView
+                android:id="@+id/tv_answer_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/acme"
+                android:text="Exemple text 2"
+                android:textColor="#FFF"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_container_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <net.igenius.customcheckbox.CustomCheckBox
+                android:id="@+id/checkbox_3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                app:color_checked="#FFF"
+                app:color_tick="@color/background"
+                app:color_unchecked="@color/background"
+                app:color_unchecked_stroke="#FFF" />
+
+            <TextView
+                android:id="@+id/tv_answer_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/acme"
+                android:text="Exemple text 3"
+                android:textColor="#FFF"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RadioGroup>

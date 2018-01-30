@@ -1,18 +1,14 @@
-package unicamp.br.prevencaodeacidentes.models;
+package br.unicamp.prevencaodeacidentes.models;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import unicamp.br.prevencaodeacidentes.R;
+import br.unicamp.prevencaodeacidentes.R;
 
 public class CustomButton extends LinearLayout {
     private String mText;
@@ -44,27 +40,8 @@ public class CustomButton extends LinearLayout {
 
 
         mTextView.setText(mText);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mImageRight.setImageDrawable(context.getDrawable(mDrawable));
-            mImageLeft.setImageDrawable(context.getDrawable(mDrawable));
-        } else {
-            //TODO: Find another way for lower than Lollipop versions
-        }
+        mImageRight.setImageDrawable(getResources().getDrawable(mDrawable));
+        mImageLeft.setImageDrawable(getResources().getDrawable(mDrawable));
 
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return super.onTouchEvent(event);
-    }
-
-    @Override
-    public boolean performClick() {
-        return super.performClick();
-    }
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 }

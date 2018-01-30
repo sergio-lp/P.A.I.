@@ -1,11 +1,11 @@
-package unicamp.br.prevencaodeacidentes.activities;
+package br.unicamp.prevencaodeacidentes.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
-import unicamp.br.prevencaodeacidentes.R;
+import br.unicamp.prevencaodeacidentes.R;
 
 public class InfoActivity extends AppCompatActivity {
 

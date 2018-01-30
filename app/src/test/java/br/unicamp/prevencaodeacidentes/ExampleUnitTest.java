@@ -1,4 +1,4 @@
-package unicamp.br.prevencaodeacidentes;
+package br.unicamp.prevencaodeacidentes;
 
 import org.junit.Test;
 

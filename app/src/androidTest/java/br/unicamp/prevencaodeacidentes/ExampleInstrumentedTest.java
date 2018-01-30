@@ -1,4 +1,4 @@
-package unicamp.br.prevencaodeacidentes;
+package br.unicamp.prevencaodeacidentes;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

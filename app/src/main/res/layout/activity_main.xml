@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0097a7"
-    tools:context="unicamp.br.prevencaodeacidentes.activities.MainActivity">
+    tools:context="br.unicamp.prevencaodeacidentes.activities.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -39,7 +38,7 @@
                 android:layout_below="@id/tvTitle"
                 android:orientation="vertical">
 
-                <unicamp.br.prevencaodeacidentes.models.CustomButton
+                <br.unicamp.prevencaodeacidentes.models.CustomButton
                     android:id="@+id/btn1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -48,7 +47,7 @@
                     app:image="@drawable/fire"
                     app:txt="Queimaduras" />
 
-                <unicamp.br.prevencaodeacidentes.models.CustomButton
+                <br.unicamp.prevencaodeacidentes.models.CustomButton
                     android:id="@+id/btn2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -58,7 +57,7 @@
                     app:image="@drawable/high_voltage"
                     app:txt="Choques" />
 
-                <unicamp.br.prevencaodeacidentes.models.CustomButton
+                <br.unicamp.prevencaodeacidentes.models.CustomButton
                     android:id="@+id/btn3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -68,7 +67,7 @@
                     app:image="@drawable/biohazard_samsung"
                     app:txt="Intoxicações" />
 
-                <unicamp.br.prevencaodeacidentes.models.CustomButton
+                <br.unicamp.prevencaodeacidentes.models.CustomButton
                     android:id="@+id/btn4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -78,7 +77,7 @@
                     app:image="@drawable/baby_bottle"
                     app:txt="Engasgo" />
 
-                <unicamp.br.prevencaodeacidentes.models.CustomButton
+                <br.unicamp.prevencaodeacidentes.models.CustomButton
                     android:id="@+id/btn5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -88,7 +87,7 @@
                     app:image="@drawable/telephone"
                     app:txt="Telefones úteis" />
 
-                <unicamp.br.prevencaodeacidentes.models.CustomButton
+                <br.unicamp.prevencaodeacidentes.models.CustomButton
                     android:id="@+id/btn6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

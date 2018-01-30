@@ -1,0 +1,87 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.unicamp.prevencaodeacidentes.fragments.QuizFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_question_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/acme"
+                android:text="Pergunta exemplo #1"
+                android:textColor="#FFF"
+                android:textSize="22sp" />
+
+            <br.unicamp.prevencaodeacidentes.models.CustomRadioGroup
+                android:id="@+id/question_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_question_1"
+                android:layout_marginTop="8dp"
+                app:answer_1="Resposta correta"
+                app:answer_2="Resposta errada"
+                app:answer_3="Resposta errada"
+                app:correct="@id/checkbox_1" />
+
+            <TextView
+                android:id="@+id/tv_question_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/question_1"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/acme"
+                android:text="Pergunta exemplo #2"
+                android:textColor="#FFF"
+                android:textSize="22sp" />
+
+            <br.unicamp.prevencaodeacidentes.models.CustomRadioGroup
+                android:id="@+id/question_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_question_2"
+                android:layout_marginTop="8dp"
+                app:answer_1="Resposta errada"
+                app:answer_2="Resposta errada"
+                app:answer_3="Resposta correta"
+                app:correct="@id/checkbox_3" />
+
+            <TextView
+                android:id="@+id/tv_question_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/question_2"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/acme"
+                android:text="Pergunta exemplo #3"
+                android:textColor="#FFF"
+                android:textSize="22sp" />
+
+            <br.unicamp.prevencaodeacidentes.models.CustomRadioGroup
+                android:id="@+id/question_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_question_3"
+                android:layout_marginTop="8dp"
+                app:answer_1="Resposta errada"
+                app:answer_2="Resposta errada"
+                app:answer_3="Resposta correta"
+                app:correct="@id/checkbox_3" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+</FrameLayout>

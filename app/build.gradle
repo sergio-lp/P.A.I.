@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "unicamp.br.prevencaodeacidentes"
+        applicationId "br.unicamp.prevencaodeacidentes"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
@@ -26,5 +26,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    compile 'com.github.clans:fab:1.6.4'
     compile 'com.android.support:design:27.0.2'
+    compile 'com.romandanylyk:pageindicatorview:1.0.0'
+    compile 'net.igenius:customcheckbox:1.3'
 }

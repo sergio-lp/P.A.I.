@@ -3,9 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0097a7"
     android:padding="16dp"
-    tools:context="unicamp.br.prevencaodeacidentes.activities.MainActivity">
+    tools:context="br.unicamp.prevencaodeacidentes.activities.MainActivity">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -22,10 +21,6 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="8dp"
                 android:scaleType="centerInside"
-                android:shadowColor="#000"
-                android:shadowDx="-2"
-                android:shadowDy="2"
-                android:shadowRadius="1.3"
                 android:src="@drawable/leftwards_2" />
 
         </LinearLayout>
@@ -50,18 +45,17 @@
                 android:text="Sobre o app"
                 android:textColor="#FFF"
                 android:textSize="34sp"
-                android:textStyle="bold"
-                android:typeface="normal" />
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/unicamp_logo"
                 android:layout_width="66dp"
                 android:layout_height="66dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_below="@id/title_about"
-                android:scaleType="centerCrop"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerCrop"
                 android:src="@drawable/unicamp" />
 
             <TextView
@@ -93,6 +87,7 @@
                 android:layout_below="@id/tv_professor_title"
                 android:layout_marginBottom="16dp"
                 android:text="Profª Doutora Maira Deguer Misko"
+                android:textAlignment="center"
                 android:textColor="#FFF" />
 
             <TextView
@@ -113,31 +108,38 @@
                 android:layout_below="@id/tv_members_title"
                 android:layout_marginBottom="16dp"
                 android:text="Letícia Mansano de Souza\nMariana Moreira\nSérgio Lourenço Polo Filho\nSharlla Nogueira"
+                android:textAlignment="center"
                 android:textColor="#FFF" />
 
-            <ImageButton
-                android:id="@+id/document_icon"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_below="@id/tv_members"
-                android:scaleType="centerCrop"
-                android:layout_marginTop="26dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="8dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/document" />
-
-            <TextView
-                android:id="@+id/tv_article"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/document_icon"
-                android:layout_marginBottom="8dp"
-                android:text="Ver o artigo completo"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_members"
+                android:layout_centerHorizontal="true"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:textAlignment="center"
-                android:textColor="#FFF"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/document_icon"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="26dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/document" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/view_article"
+                    android:textAlignment="center"
+                    android:textColor="#00f7ff"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
         </RelativeLayout>
 
