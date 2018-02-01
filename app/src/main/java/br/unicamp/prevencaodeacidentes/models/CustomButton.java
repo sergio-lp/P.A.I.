@@ -30,7 +30,7 @@ public class CustomButton extends LinearLayout {
         mDrawable = a.getResourceId(R.styleable.CustomButton_image, 0);
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.button, this, true);
+        inflater.inflate(R.layout.view_button, this, true);
 
         measure(findViewById(R.id.btn_relative).getMeasuredWidth(), findViewById(R.id.btn_relative).getMeasuredHeight());
 

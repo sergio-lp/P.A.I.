@@ -21,8 +21,6 @@
 
         <activity android:name="br.unicamp.prevencaodeacidentes.activities.InfoActivity" />
 
-        <activity android:name="br.unicamp.prevencaodeacidentes.activities.AltMainActivity" />
-
         <activity android:name="br.unicamp.prevencaodeacidentes.activities.DefaultActivity" />
 
     </application>

@@ -16,17 +16,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CustomButton btnPhones = findViewById(R.id.btn5);
-        CustomButton btnInfo = findViewById(R.id.btn6);
-
         CustomButton btnFire = findViewById(R.id.btn1);
         CustomButton btnVoltage = findViewById(R.id.btn2);
+        CustomButton btnToxic = findViewById(R.id.btn3);
+        CustomButton btnChoke = findViewById(R.id.btn4);
+        CustomButton btnPhones = findViewById(R.id.btn5);
+        CustomButton btnDrown = findViewById(R.id.btn6);
+        CustomButton btnTransport = findViewById(R.id.btn7);
+        CustomButton btnGeneral = findViewById(R.id.btn8);
+        CustomButton btnFall = findViewById(R.id.btn9);
+        CustomButton btnRunOver = findViewById(R.id.btn10);
+        CustomButton btnInfo = findViewById(R.id.btn_info);
 
         btnFire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Test activity layout
-                startActivity(new Intent(MainActivity.this, AltMainActivity.class));
+                Intent i = new Intent(MainActivity.this, DefaultActivity.class);
+                i.putExtra("title", "Queimaduras");
+                startActivity(i);
                 overridePendingTransition(R.anim.enter, R.anim.exit);
             }
         });
@@ -36,6 +43,76 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, DefaultActivity.class);
                 i.putExtra("title", "Choques");
+                startActivity(i);
+                overridePendingTransition(R.anim.enter, R.anim.exit);
+            }
+        });
+
+        btnToxic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, DefaultActivity.class);
+                i.putExtra("title", "Intoxicações");
+                startActivity(i);
+                overridePendingTransition(R.anim.enter, R.anim.exit);
+            }
+        });
+
+        btnChoke.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, DefaultActivity.class);
+                i.putExtra("title", "Asfixia");
+                startActivity(i);
+                overridePendingTransition(R.anim.enter, R.anim.exit);
+            }
+        });
+
+        btnDrown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, DefaultActivity.class);
+                i.putExtra("title", "Afogamento");
+                startActivity(i);
+                overridePendingTransition(R.anim.enter, R.anim.exit);
+            }
+        });
+
+        btnTransport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, DefaultActivity.class);
+                i.putExtra("title", "Transporte");
+                startActivity(i);
+                overridePendingTransition(R.anim.enter, R.anim.exit);
+            }
+        });
+
+        btnGeneral.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, DefaultActivity.class);
+                i.putExtra("title", "Traumas e precauções gerais");
+                startActivity(i);
+                overridePendingTransition(R.anim.enter, R.anim.exit);
+            }
+        });
+
+        btnRunOver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, DefaultActivity.class);
+                i.putExtra("title", "Atropelamento");
+                startActivity(i);
+                overridePendingTransition(R.anim.enter, R.anim.exit);
+            }
+        });
+
+        btnFall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, DefaultActivity.class);
+                i.putExtra("title", "Quedas");
                 startActivity(i);
                 overridePendingTransition(R.anim.enter, R.anim.exit);
             }

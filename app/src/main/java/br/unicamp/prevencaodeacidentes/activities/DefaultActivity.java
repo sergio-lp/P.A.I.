@@ -7,6 +7,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -32,14 +35,29 @@ public class DefaultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_default);
 
         TextView tvTitle = findViewById(R.id.tv_title_default);
-        tvTitle.setText(getIntent().getExtras().getString("title"));
+        String title = getIntent().getExtras().getString("title");
+        tvTitle.setText(title);
 
         final List<Fragment> fragmentList = new ArrayList<>();
+
         DefaultFragment fragment1 = new DefaultFragment();
-        DefaultFragment fragment2 = new DefaultFragment();
+        Bundle b = new Bundle();
+        Spanned content = SpannableString.valueOf("Ainda indisponível");
+
+        switch (title) {
+            case "Queimaduras":
+                content = Html.fromHtml("• Não deixe <font color='#ff1744'>fósforos</font>, <font color='#ff1744'>isqueiros</font>, e outros objetos que possam causar <font color='#ff1744'>fogo</font> ao alcance dos pequenos." +
+                        "<br /><br />• Mantenha a criança longe da <font color='#ff1744'>cozinha</font> e do <font color='#ff1744'>fogão</font>, principalmente durante o preparo das refeições." +
+                        "<br /><br />• Cozinhe nas <font color='#ff1744'>bocas</font> de trás do fogão e sempre deixe os <font color='#ff1744'>cabos das panelas</font> virados para trás." +
+                        "<br /><br />• Evite carregar crianças no colo enquanto mexe em <font color='#ff1744'>panelas</font> no fogão ou manipula <font color='#ff1744'>líquidos quentes</font>." +
+                        "<br /><br />• Não deixe as crianças por perto quando estiver <font color='#ff1744'>passando roupa</font>, nem largue o <font color='#ff1744'>ferro elétrico</font> sem vigilância.");
+
+        }
+        b.putCharSequence("content", content);
+        fragment1.setArguments(b);
+
         final QuizFragment fragment3 = new QuizFragment();
         fragmentList.add(fragment1);
-        fragmentList.add(fragment2);
         fragmentList.add(fragment3);
 
         ImageButton btnBack = findViewById(R.id.btn_back);

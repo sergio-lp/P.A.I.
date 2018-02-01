@@ -64,8 +64,18 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="26dp"
-                    app:image="@drawable/biohazard_samsung"
+                    app:image="@drawable/biohazard"
                     app:txt="Intoxicações" />
+
+                <br.unicamp.prevencaodeacidentes.models.CustomButton
+                    android:id="@+id/btn10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="26dp"
+                    app:image="@drawable/car"
+                    app:txt="Atropelamento" />
 
                 <br.unicamp.prevencaodeacidentes.models.CustomButton
                     android:id="@+id/btn4"
@@ -75,7 +85,47 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="26dp"
                     app:image="@drawable/baby_bottle"
-                    app:txt="Engasgo" />
+                    app:txt="Asfixia" />
+
+                <br.unicamp.prevencaodeacidentes.models.CustomButton
+                    android:id="@+id/btn6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="26dp"
+                    app:image="@drawable/droplet"
+                    app:txt="Afogamentos" />
+
+                <br.unicamp.prevencaodeacidentes.models.CustomButton
+                    android:id="@+id/btn7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="26dp"
+                    app:image="@drawable/motorway"
+                    app:txt="Transporte" />
+
+                <br.unicamp.prevencaodeacidentes.models.CustomButton
+                    android:id="@+id/btn8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="26dp"
+                    app:image="@drawable/warning"
+                    app:txt="Traumas e precauções gerais" />
+
+                <br.unicamp.prevencaodeacidentes.models.CustomButton
+                    android:id="@+id/btn9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="26dp"
+                    app:image="@drawable/skull"
+                    app:txt="Quedas" />
 
                 <br.unicamp.prevencaodeacidentes.models.CustomButton
                     android:id="@+id/btn5"
@@ -88,7 +138,7 @@
                     app:txt="Telefones úteis" />
 
                 <br.unicamp.prevencaodeacidentes.models.CustomButton
-                    android:id="@+id/btn6"
+                    android:id="@+id/btn_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"

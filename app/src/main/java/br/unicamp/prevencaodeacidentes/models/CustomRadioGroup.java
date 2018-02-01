@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -33,7 +32,7 @@ public class CustomRadioGroup extends LinearLayout {
         super(context, attrs);
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.custom_radio_group, this, true);
+        inflater.inflate(R.layout.view_radiogroup, this, true);
 
         measure(findViewById(R.id.radiogroup_custom).getMeasuredWidth(), findViewById(R.id.radiogroup_custom).getMeasuredHeight());
 

@@ -2,4 +2,47 @@
     <string name="app_name">Prevenção de Acidentes na Infância</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu est ex. Phasellus at quam magna. Etiam interdum cursus libero, non accumsan velit semper quis. Nam sagittis lacinia diam, nec semper risus iaculis nec. Duis semper venenatis consectetur. Donec ornare mollis elit, vel fermentum turpis luctus in. Aenean eget purus nec purus bibendum condimentum. Aliquam et finibus risus. Donec eu risus ornare, congue quam eget, vehicula justo. Duis hendrerit nec odio vel convallis. Etiam et ullamcorper sem. Nullam in orci orci. Vestibulum gravida ut justo at condimentum. In mollis sapien vel lectus dignissim congue. Pellentesque in pretium augue. Curabitur at rutrum magna. Nulla sed mattis lacus, eu fermentum libero. Suspendisse at volutpat dolor, vitae placerat dolor. Aenean efficitur enim id nulla vulputate, sed pulvinar nibh aliquam. Etiam vulputate quam et auctor lobortis. Donec eu ullamcorper tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris pellentesque nisi dolor, quis condimentum mi blandit eu. Pellentesque a nisi nec lorem tempus iaculis sed interdum ante. Donec nec ipsum suscipit, semper tellus sit amet, tempor felis. Sed in aliquam sem, sed efficitur lacus. Duis dapibus efficitur ex, maximus lobortis augue sodales eget. Praesent venenatis viverra enim ac dictum. Ut porttitor ex mauris, eu mollis neque dignissim non. Nulla sed neque blandit, lobortis purus non, tincidunt lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt rutrum dui. Vivamus vitae turpis dolor. Donec dignissim scelerisque ex. Sed pretium semper dapibus. Nulla volutpat est auctor orci rhoncus, sit amet vulputate est aliquet. Cras erat odio, semper ac turpis vel, consequat elementum sapien. Nam ac nunc rhoncus, finibus nulla at, dignissim mi. Quisque sit amet justo ut tellus lobortis malesuada eu a lacus. Sed nec felis id mi condimentum vehicula. Sed diam libero, lacinia non lacus at, auctor faucibus nibh. Proin tempor lorem et consequat consectetur. Sed sit amet nunc sed mi interdum luctus quis a nunc. Fusce lacinia commodo congue. Vivamus lacinia est a sollicitudin lacinia. Sed semper tellus quis diam egestas laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum, mauris eu egestas vestibulum, turpis ante tempus metus, eget condimentum odio velit vitae risus. Ut posuere sollicitudin tellus, eget commodo tellus luctus id. Aliquam erat volutpat. Sed quis lorem pellentesque, lobortis nisi efficitur, feugiat risus. Vivamus auctor velit justo, eget euismod diam rutrum sit amet.</string>
     <string name="view_article"><u>Ver o artigo completo</u></string>
+    <string name="fab_license">Copyright 2015 Dmytro Tarianyk\n\n
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at\n\n
+
+   http://www.apache.org/licenses/LICENSE-2.0\n\n
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</string>
+    <string name="piv_license">Copyright 2017 Roman Danylyk\n\n
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at\n\n
+
+    http://www.apache.org/licenses/LICENSE-2.0\n\n
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</string>
+    <string name="ccb_license">Copyright 2016 CoXier\n\n
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at\n\n
+
+   http://www.apache.org/licenses/LICENSE-2.0\n\n
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</string>
+    <string name="ok">OK</string>
+    <string name="url_ccb">https://github.com/CoXier/CheckBox</string>
+    <string name="url_piv">https://github.com/romandanylyk/PageIndicatorView</string>
+    <string name="url_fab">https://github.com/Clans/FloatingActionButton</string>
 </resources>
