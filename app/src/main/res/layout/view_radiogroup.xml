@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
-                android:fontFamily="@font/acme"
+                android:fontFamily="@font/averiasanslibre"
                 android:text="Exemple text 1"
                 android:textColor="#FFF"
                 android:textSize="22sp" />
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
-                android:fontFamily="@font/acme"
+                android:fontFamily="@font/averiasanslibre"
                 android:text="Exemple text 2"
                 android:textColor="#FFF"
                 android:textSize="22sp" />
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
-                android:fontFamily="@font/acme"
+                android:fontFamily="@font/averiasanslibre"
                 android:text="Exemple text 3"
                 android:textColor="#FFF"
                 android:textSize="22sp" />

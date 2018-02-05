@@ -28,13 +28,13 @@
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/btn_img_left"
             android:layout_toStartOf="@id/btn_img_right"
-            android:fontFamily="@font/acme"
+            android:fontFamily="@font/averiasanslibre"
             android:paddingBottom="8dp"
             android:paddingTop="8dp"
             android:text="Traumas e precauções gerais"
             android:textAlignment="center"
             android:textColor="#FFF"
-            android:textSize="22sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/btn_img_right"

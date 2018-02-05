@@ -2,19 +2,22 @@ package br.unicamp.prevencaodeacidentes.activities;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import br.unicamp.prevencaodeacidentes.R;
 
 public class InfoActivity extends AppCompatActivity {
-    private CoordinatorLayout mRootLayout;
+    private ViewGroup mRootLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class InfoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(getString(R.string.url_fab)));
+                startActivity(intent);
             }
         });
 
@@ -61,6 +65,7 @@ public class InfoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(getString(R.string.url_piv)));
+                startActivity(intent);
             }
         });
 
@@ -69,7 +74,55 @@ public class InfoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(getString(R.string.url_ccb)));
+                startActivity(intent);
             }
         });
+
+        view.findViewById(R.id.url_microsoft).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("http://www.microsoft.com"));
+                startActivity(i);
+            }
+        });
+
+        view.findViewById(R.id.url_emojione).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://www.emojione.com"));
+                startActivity(i);
+            }
+        });
+    }
+
+    public void onProfisClick(View v) {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse("https://profis.prg.unicamp.br"));
+        startActivity(i);
+    }
+
+    public void onUnicampLogoClick(View v) {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse("http://www.unicamp.br"));
+        startActivity(i);
+    }
+
+    public void onFeedbackClick(View v) {
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"sergio_lpf@outlook.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, "Feedback - " + getString(R.string.app_name));
+        i.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("Android SDK: " + Build.VERSION.SDK_INT) + " - " + Build.VERSION.CODENAME + "\n_________________________________\n\n\n");
+        startActivity(i);
+    }
+
+    public void onFullArticleClick(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Dialog);
+        builder.setMessage("Ainda indisponível!");
+        builder.setTitle("Artigo completo");
+        builder.setPositiveButton(R.string.ok, null);
+        builder.show();
     }
 }

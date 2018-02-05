@@ -19,10 +19,11 @@
                 android:id="@+id/tv_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/acme"
-                android:textColor="#FFF"
+                android:fontFamily="@font/averiasanslibre"
                 android:paddingTop="8dp"
-                android:textSize="16sp" />
+                android:textColor="#FFF"
+                android:paddingBottom="56dp"
+                android:textSize="18sp" />
 
         </LinearLayout>
 

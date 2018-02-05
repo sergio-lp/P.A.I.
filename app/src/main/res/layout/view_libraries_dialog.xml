@@ -12,6 +12,33 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Ícones"
+            android:textColor="#000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/url_microsoft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/url_microsoft"
+            android:textColor="@color/background" />
+
+        <TextView
+            android:id="@+id/url_emojione"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/url_emojione"
+            android:textColor="@color/background" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="FloatingActionButton"
             android:textColor="#000"
             android:textStyle="bold" />
@@ -20,6 +47,8 @@
             android:id="@+id/url_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
             android:text="@string/url_fab"
             android:textColor="@color/background" />
 
@@ -41,6 +70,8 @@
             android:id="@+id/url_piv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
             android:text="@string/url_piv"
             android:textColor="@color/background" />
 
@@ -62,6 +93,8 @@
             android:id="@+id/url_ccb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
             android:text="@string/url_ccb"
             android:textColor="@color/background" />
 
