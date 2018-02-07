@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
         CustomButton btnGeneral = findViewById(R.id.btn8);
         CustomButton btnFall = findViewById(R.id.btn9);
         CustomButton btnRunOver = findViewById(R.id.btn10);
+        CustomButton btnFood = findViewById(R.id.btn11);
+        CustomButton btnHygiene = findViewById(R.id.btn12);
+        CustomButton btnAnimals = findViewById(R.id.btn13);
         CustomButton btnInfo = findViewById(R.id.btn_info);
 
         btnFire.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +116,36 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, DefaultActivity.class);
                 i.putExtra("title", "Quedas");
+                startActivity(i);
+                overridePendingTransition(R.anim.enter, R.anim.exit);
+            }
+        });
+
+        btnFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, DefaultActivity.class);
+                i.putExtra("title", "Alimentação");
+                startActivity(i);
+                overridePendingTransition(R.anim.enter, R.anim.exit);
+            }
+        });
+
+        btnHygiene.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, DefaultActivity.class);
+                i.putExtra("title", "Higiene");
+                startActivity(i);
+                overridePendingTransition(R.anim.enter, R.anim.exit);
+            }
+        });
+
+        btnAnimals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, DefaultActivity.class);
+                i.putExtra("title", "Animais peçonhentos");
                 startActivity(i);
                 overridePendingTransition(R.anim.enter, R.anim.exit);
             }

@@ -14,8 +14,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.github.clans.fab.FloatingActionButton;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +24,7 @@ import br.unicamp.prevencaodeacidentes.fragments.QuizFragment;
 public class DefaultActivity extends AppCompatActivity {
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
-    private FloatingActionButton mFAB;
+    private android.support.design.widget.FloatingActionButton mFAB;
     private int mCurrentItem = 0;
 
     @Override
@@ -69,7 +67,8 @@ public class DefaultActivity extends AppCompatActivity {
                         "<br /><br /><font color='#ff1744'><b>•</b></font> Deixe o chão livre de objetos pequenos como botões, bolas de gude, moedas e tachinhas, para não correr o risco da criança engolir." +
                         "<br /><br /><font color='#ff1744'><b>•</b></font> Certifique-se de que os brinquedos da criança não possuem partes pequenas e que se soltam." +
                         "<br /><br /><font color='#ff1744'><b>•</b></font> Não deixe a criança sozinha no carro, mesmo que o vidro esteja entreaberto." +
-                        "<br /><br /><font color='#ff1744'><b>•</b></font> Brinquedos com correntes, tiras e cordas com mais de 15cm devem ser evitados.");
+                        "<br /><br /><font color='#ff1744'><b>•</b></font> Brinquedos com correntes, tiras e cordas com mais de 15 cm devem ser evitados." +
+                        "<br /><br /><font color='#ff1744'><b>•</b></font> Nunca deixe sacos plásticos ao alcance das crianças.");
                 break;
             case "Afogamento":
                 content = Html.fromHtml("<font color='#ff1744'><b>•</b></font> As crianças devem sempre ser supervisionadas por um adulto quando estiverem próximas de água." +
@@ -90,8 +89,7 @@ public class DefaultActivity extends AppCompatActivity {
                 content = Html.fromHtml("<font color='#ff1744'><b>•</b></font> Mantenha camas, armários e outros móveis longe das janelas e cortinas e verifique se estão estáveis." +
                         "<br /><br /><font color='#ff1744'><b>•</b></font> Cuidado com a quina dos móveis." +
                         "<br /><br /><font color='#ff1744'><b>•</b></font> Não use toalhas de mesa compridas." +
-                        "<br /><br /><font color='#ff1744'><b>•</b></font> Cuidado com pisos escorregadios, coloque antiderrapante nos tapetes." +
-                        "<br /><br /><font color='#ff1744'><b>•</b></font> Nunca deixe sacos plásticos ao alcance das crianças.");
+                        "<br /><br /><font color='#ff1744'><b>•</b></font> Cuidado com pisos escorregadios, coloque antiderrapante nos tapetes.");
                 break;
             case "Quedas":
                 content = Html.fromHtml("<font color='#ff1744'><b>•</b></font> Escadas, sacadas e lajes não são lugares para brincar." +
@@ -111,26 +109,77 @@ public class DefaultActivity extends AppCompatActivity {
                         "<br /><br /><font color='#ff1744'><b>•</b></font> Menores de 10 anos não devem atravessar a rua sozinhos. É importante segurar os pequenos pelo pulso." +
                         "<br /><br /><font color='#ff1744'><b>•</b></font> Entradas de garagens, quintais sem cerca ou estacionamentos não são seguros para brincadeiras.");
                 break;
+            case "Alimentação":
+                content = Html.fromHtml("<font color='#ff1744'><b>•</b></font> A carne de porco era proíbida para crianças a partir de 6 meses de idade por ser\n" +
+                        "gordurosa e pobre em nutrientes. Acreditava-se, portanto, que faria mal à digestão\n" +
+                        "do bebê. Entretanto, estudos recentes ressaltam que o lombo suíno chega a ter\n" +
+                        "40% menos gordura que a carne de vaca, além de ser rica em vitamina B1 e ideal\n" +
+                        "para prevenção de doenças cardíacas e neurológicas." +
+                        "<br /><br /><font color='#ff1744'><b>•</b></font> O ovo só podia ser consumido por bebês com mais de nove meses por causa da\n" +
+                        "albumina presente na clara, um composto alergênico, apenas a gema era\n" +
+                        "permitida. Porém, estudos mostram que o ovo inteiro pode ser ingerido. Só é\n" +
+                        "vetado para bebês com histórico familiar de alergia ou que apresentem algum tipo\n" +
+                        "de reação durante a amamentação." +
+                        "<br /><br /><font color='#ff1744'><b>•</b></font> Recomendava-se bananas de dois tipos: a prata e a nanica, consideradas mais\n" +
+                        "leves e de fácil absorção. Todavia, todos os tipos (ouro, nanica, da-terra, prata,\n" +
+                        "maçã ou banana-d’água) têm as mesmas propriedades e papel semelhante no\n" +
+                        "processo de digestão." +
+                        "<br /><br /><font color='#ff1744'><b>•</b></font> O amendoim era vetado por conter pelo menos nove tipos de proteína com alto\n" +
+                        "poder alergênico. Poderia causar intoxicação no bebê. No entanto o contato\n" +
+                        "precoce com o alimento na forma de pasta estimula o sistema imunológico a\n" +
+                        "assimilar as proteínas e assim evitar reação alérgica.");
+                break;
+            case "Animais peçonhentos":
+                content = Html.fromHtml("<font color='#ff1744'><b>•</b></font> Não permitir que crianças brinquem em terrenos baldios." +
+                        "<br /><br /><font color='#ff1744'><b>•</b></font> Não deixar entulhos no quintal." +
+                        "<br /><br /><font color='#ff1744'><b>•</b></font> Não manter ambientes favoráveis à proliferação desses animais, como tijolos\n" +
+                        "empilhados, caixas de papelão, madeiras etc." +
+                        "<br /><br /><font color='#ff1744'><b>•</b></font> Olhar o calçado antes de colocá-los." +
+                        "<br /><br /><font color='#ff1744'><b>•</b></font> Não andar descalço em ambientes desconhecidos.");
+                break;
+            case "Higiene":
+                content = Html.fromHtml("<font color='#ff1744'><b><h2>O que a criança deve aprender sobre higiene pessoal:</h2></b></font>" +
+                        "<font color='#ff1744'><b>•</font> Escovar os dentes:</b> Os pais devem explicar a maneira correta de fazê-lo, como\n" +
+                        "escovar a língua e de que forma usa-se o fio dental. Atenção: nos primeiros dias,\n" +
+                        "fique olhando para ver se seu filho faz certo; depois o deixe fazer sozinho, mas\n" +
+                        "fiscalize, veja se está bem feito. Depois de um tempo, quando vir que ele\n" +
+                        "desempenha bem essa função, pode deixá-lo fazer totalmente sozinho." +
+                        "<br /><br /><font color='#ff1744'><b>•</font> Lavar as mãos: </b>antes das refeições, depois de usar o banheiro e quando chegar da\n" +
+                        "rua. Até os quatro anos, os pais devem levar a criança para lavar as mãos. Depois\n" +
+                        "dessa idade, podem apenas reforçar o recado, mas deixando que o façam.\n" +
+                        "Lembre-se de ensinar cada passo – água, sabão, enxáguar e enxugar." +
+                        "<br /><br /><font color='#ff1744'><b>•</font> Pentear os cabelos: </b>para os meninos, essa tarefa é mais fácil; as meninas\n" +
+                        "precisam de mais atenção, até pelo, menos sete ou oito anos de idade para lavá-\n" +
+                        "los e penteá-los. O importante é ensinar desde cedo a pentear o cabelo ao acordar\n" +
+                        "e depois do banho." +
+                        "<br /><br /><font color='#ff1744'><b>•</font> Tomar banho: </b>É preciso que a criança tenham uma hora marcada para tomar o\n" +
+                        "banho e seus utensílios (sabonetes, xampu, condicionador e toalhas) devem estar\n" +
+                        "sempre ao seu alcance quando estão aprendendo a tomar banho sozinhas. Os pais\n" +
+                        "devem mostrar a maneira certa de lavar as partes íntimas, os pés e todo o corpo.\n" +
+                        "\n" +
+                        "Elas precisam de auxílio até uns seis anos, quando podem exercer essa atividade\n" +
+                        "totalmente sozinhas.");
+                break;
             case "Telefones":
-                content = Html.fromHtml("<h1><font color='#ff3b3e'>Em todo o Brasil:</font></h1>" +
+                content = Html.fromHtml("<h2><font color='#ff3b3e'>Em todo o Brasil:</font></h2>" +
                         "Serviço de atendimento móvel de urgência (SAMU): <b><font color='#ff3b3e'>192</font></b>" +
                         "<br />Polícia Militar (PM): <b><font color='#ff3b3e'>190</font></b>" +
                         "<br />Corpo de Bombeiros: <b><font color='#ff3b3e'>193</font></b>" +
-                        "<br /><br /><h1><font color='#ff3b3e'>Em Campinas - SP:</font></h1>" +
+                        "<br /><br /><h2><font color='#ff3b3e'>Em Campinas - SP:</font></h2>" +
                         "CIATox UNICAMP: <b><font color='#ff3b3e'>(19) 3521-7555</b></font>");
                 break;
         }
         b.putCharSequence("content", content);
         fragment1.setArguments(b);
 
-        mFAB = findViewById(R.id.fab_deafault);
+        mFAB = findViewById(R.id.fab_default);
 
         final QuizFragment fragment3 = new QuizFragment();
         fragmentList.add(fragment1);
 
         if (!title.equals("Telefones")) {
             fragmentList.add(fragment3);
-        }  else {
+        } else {
             mFAB.setVisibility(View.INVISIBLE);
         }
 

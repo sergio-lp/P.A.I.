@@ -36,6 +36,16 @@
             android:textColor="@color/background" />
 
         <TextView
+            android:id="@+id/url_twemoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/url_twemoji"
+            android:textColor="@color/background" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

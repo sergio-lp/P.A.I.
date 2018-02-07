@@ -15,11 +15,11 @@
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/averiasanslibre"
             android:paddingEnd="16dp"
             android:paddingStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Prevenção de Acidentes\nNa Infância"
+            android:text="Prevenção de Acidentes\nna Infância"
             android:textAlignment="center"
             android:textColor="#FFF"
             android:textSize="26sp"
@@ -39,6 +39,26 @@
                 android:layout_marginStart="16dp"
                 app:image="@drawable/droplet"
                 app:txt="Afogamentos" />
+
+            <br.unicamp.prevencaodeacidentes.models.CustomButton
+                android:id="@+id/btn11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="26dp"
+                app:image="@drawable/fork_and_knife"
+                app:txt="Alimentação" />
+
+            <br.unicamp.prevencaodeacidentes.models.CustomButton
+                android:id="@+id/btn13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="26dp"
+                app:image="@drawable/scorpion"
+                app:txt="Animais peçonhentos" />
 
             <br.unicamp.prevencaodeacidentes.models.CustomButton
                 android:id="@+id/btn4"
@@ -69,6 +89,16 @@
                 android:layout_marginTop="26dp"
                 app:image="@drawable/high_voltage"
                 app:txt="Choques" />
+
+            <br.unicamp.prevencaodeacidentes.models.CustomButton
+                android:id="@+id/btn12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="26dp"
+                app:image="@drawable/bathtub"
+                app:txt="Higiene" />
 
             <br.unicamp.prevencaodeacidentes.models.CustomButton
                 android:id="@+id/btn3"

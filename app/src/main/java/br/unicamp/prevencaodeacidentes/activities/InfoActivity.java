@@ -95,6 +95,15 @@ public class InfoActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        view.findViewById(R.id.url_twemoji).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://twitter.com"));
+                startActivity(i);
+            }
+        });
     }
 
     public void onProfisClick(View v) {
