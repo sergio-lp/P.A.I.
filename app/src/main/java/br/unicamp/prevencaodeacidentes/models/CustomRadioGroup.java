@@ -147,9 +147,9 @@ public class CustomRadioGroup extends LinearLayout {
         boolean isCorrect = mRadioGroup.getCheckedRadioButtonId() == mCorrect;
 
         if (getSelected() != null) {
-            getCorrect().setTextColor(getResources().getColor(R.color.green_accent));
+            getCorrect().setTextColor(getResources().getColor(R.color.greenEmphasis));
             if (!isCorrect) {
-                getSelected().setTextColor(getResources().getColor(R.color.red_accent));
+                getSelected().setTextColor(getResources().getColor(R.color.redEmphasis));
             }
 
             mCheckBox1.setClickable(false);

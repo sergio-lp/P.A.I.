@@ -4,12 +4,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -119,8 +116,9 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     public void onFeedbackClick(View v) {
-        Intent i = new Intent(Intent.ACTION_SEND);
+        Intent i = new Intent(Intent.ACTION_SENDTO);
         i.setType("message/rfc822");
+        i.setData(Uri.parse("mailto:"));
         i.putExtra(Intent.EXTRA_EMAIL, new String[]{"sergio_lpf@outlook.com"});
         i.putExtra(Intent.EXTRA_SUBJECT, "Feedback - " + getString(R.string.app_name));
         i.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("Android SDK: " + Build.VERSION.SDK_INT) + " - " + Build.VERSION.CODENAME + "\n_________________________________\n\n\n");

@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF4DD0E1</color>
+    <color name="colorPrimary">#0097a7</color>
     <color name="colorPrimaryDark">#0097a7</color>
     <color name="colorAccent">#7cba95</color>
     <color name="colorAccentDark">#FF4081</color>
-    <color name="black_overlay">#66000000</color>
+    <color name="blackOverlay">#66000000</color>
     <color name="background">#0097a7</color>
     <color name="buttons">#7cba95</color>
-    <color name="buttons_dark">#33c26d</color>
-    <color name="buttons_darker">#048438</color>
-    <color name="red_accent">#ff1744</color>
-    <color name="green_accent">#00e676</color>
+    <color name="buttonsDark">#048438</color>
+    <color name="redEmphasis">#ff1744</color>
+    <color name="greenEmphasis">#00e676</color>
+    <color name="chipBackground">#eaeaea</color>
+
+    <!--- Mark colors -->
+    <color name="markBlue">#42A5F5</color>
+    <color name="markOrange">#FFAB40</color>
+    <color name="markGreen">#00E676</color>
+    <color name="markMagenta">#EA80FC</color>
+    <color name="markRed">#FF5252</color>
 </resources>

@@ -1,18 +1,43 @@
 package br.unicamp.prevencaodeacidentes.activities;
 
+import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,18 +45,21 @@ import java.util.List;
 import br.unicamp.prevencaodeacidentes.R;
 import br.unicamp.prevencaodeacidentes.fragments.DefaultFragment;
 import br.unicamp.prevencaodeacidentes.fragments.QuizFragment;
+import br.unicamp.prevencaodeacidentes.models.Chip;
+import br.unicamp.prevencaodeacidentes.models.Warning;
 
 public class DefaultActivity extends AppCompatActivity {
     private ViewPager mPager;
-    private PagerAdapter mPagerAdapter;
     private android.support.design.widget.FloatingActionButton mFAB;
     private int mCurrentItem = 0;
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default);
 
+        mProgressBar = findViewById(R.id.map_progress_bar);
         TextView tvTitle = findViewById(R.id.tv_title_default);
         String title = getIntent().getExtras().getString("title");
         tvTitle.setText(title);
@@ -173,14 +201,41 @@ public class DefaultActivity extends AppCompatActivity {
         fragment1.setArguments(b);
 
         mFAB = findViewById(R.id.fab_default);
+        mFAB.setVisibility(View.INVISIBLE);
 
-        final QuizFragment fragment3 = new QuizFragment();
         fragmentList.add(fragment1);
 
-        if (!title.equals("Telefones")) {
+        if (!title.equals("Telefones") && !title.equals("Mapa")) {
+            final QuizFragment fragment3 = new QuizFragment();
             fragmentList.add(fragment3);
-        } else {
-            mFAB.setVisibility(View.INVISIBLE);
+            mFAB.setVisibility(View.VISIBLE);
+            mFAB.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mCurrentItem == fragmentList.size() - 1) {
+                        long r = fragment3.checkAnswers();
+                        if (r == 0) {
+                            mFAB.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    finish();
+                                }
+                            });
+                        }
+                    } else {
+                        mCurrentItem++;
+                        mPager.setCurrentItem(mCurrentItem);
+                    }
+                }
+            });
+        }
+
+        if (title.equals("Mapa")) {
+            fragmentList.clear();
+            SupportMapFragment mapFragment = new SupportMapFragment();
+            fragmentList.add(mapFragment);
+            prepareMapFragment(mapFragment);
+            mProgressBar.setVisibility(View.VISIBLE);
         }
 
         ImageButton btnBack = findViewById(R.id.btn_back);
@@ -192,7 +247,7 @@ public class DefaultActivity extends AppCompatActivity {
         });
 
         mPager = findViewById(R.id.pager);
-        mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+        PagerAdapter mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
 
             @Override
             public Fragment getItem(int position) {
@@ -233,30 +288,188 @@ public class DefaultActivity extends AppCompatActivity {
 
         mPager.setAdapter(mPagerAdapter);
         mCurrentItem = mPager.getCurrentItem();
-        mFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mCurrentItem == fragmentList.size() - 1) {
-                    long r = fragment3.checkAnswers();
-                    if (r == 0) {
-                        mFAB.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                finish();
-                            }
-                        });
-                    }
-                } else {
-                    mCurrentItem++;
-                    mPager.setCurrentItem(mCurrentItem);
-                }
-            }
-        });
     }
 
     @Override
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.left_to_right, R.anim.left_to_right_exit);
+    }
+
+    private void prepareMapFragment(SupportMapFragment mapFragment) {
+        mapFragment.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(final GoogleMap googleMap) {
+                googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                    @Override
+                    public void onInfoWindowClick(Marker marker) {
+                        Intent i = new Intent(DefaultActivity.this, MarkerActivity.class);
+                        i.putExtra("title", marker.getTitle());
+                        i.putExtra("desc", marker.getSnippet());
+                        startActivity(i);
+                    }
+                });
+
+                final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+
+                ValueEventListener eventListener = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot s : dataSnapshot.child("risksCoords").getChildren()) {
+                            Warning w = s.getValue(Warning.class);
+
+                            if (w != null) {
+                                googleMap.addMarker(new MarkerOptions().snippet(w.getDescription())
+                                        .title(w.getTitle()).icon(BitmapDescriptorFactory.defaultMarker(w.getType()))
+                                        .position(new LatLng(w.getLat(), w.getLon())));
+                            }
+                        }
+
+                        mProgressBar.setVisibility(View.INVISIBLE);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Toast.makeText(DefaultActivity.this, "Desculpe! Ocorreu um erro.", Toast.LENGTH_SHORT).show();
+                    }
+                };
+
+                database.addValueEventListener(eventListener);
+
+                LatLng campinas = new LatLng(-22.907104f, -47.063240);
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(campinas, 10));
+
+                googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                    @Override
+                    public void onMapClick(final LatLng latLng) {
+                        AlertDialog.Builder newMarkDialog = prepareMarkDialog(
+                                database,
+                                latLng
+                        );
+
+                        newMarkDialog.show();
+                    }
+                });
+
+                if (ActivityCompat.checkSelfPermission(DefaultActivity.this,
+                        Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                        && ActivityCompat.checkSelfPermission(DefaultActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+
+                    return;
+                }
+                googleMap.setMyLocationEnabled(true);
+            }
+        });
+    }
+
+    private AlertDialog.Builder prepareMarkDialog(final DatabaseReference marks,
+                                                  final LatLng latLng) {
+
+        AlertDialog.Builder markDialog = new AlertDialog.Builder(DefaultActivity.this);
+        View dialog = LayoutInflater.from(DefaultActivity.this)
+                .inflate(R.layout.view_new_mark_dialog, mPager, false);
+        markDialog.setView(dialog);
+
+        final EditText edTitle = dialog.findViewById(R.id.ed_title);
+        final EditText edDescription = dialog.findViewById(R.id.ed_description);
+
+        final List<Chip> chipList = new ArrayList<>();
+
+        chipList.add((Chip) dialog.findViewById(R.id.chip_fall));
+        chipList.add((Chip) dialog.findViewById(R.id.chip_animals));
+        chipList.add((Chip) dialog.findViewById(R.id.chip_assault));
+        chipList.add((Chip) dialog.findViewById(R.id.chip_electricity));
+        chipList.add((Chip) dialog.findViewById(R.id.chip_vegetation));
+
+        View.OnClickListener chipClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (Chip c : chipList) {
+                    if (c.getId() == v.getId()) {
+                        c.setMarked(!c.isMarked());
+                    } else {
+                        c.setMarked(false);
+                    }
+                }
+            }
+        };
+
+        for (Chip c : chipList) {
+            c.setOnClickListener(chipClick);
+        }
+
+        final List<Integer> lastID = new ArrayList<>();
+
+        markDialog.setTitle("Nova área de risco");
+        markDialog.setNegativeButton("Cancelar", null);
+        markDialog.setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Query lastQuery = marks.child("risksCoords").orderByKey().limitToLast(1);
+                lastQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        lastID.clear();
+                        for (DataSnapshot child : dataSnapshot.getChildren()) {
+                            lastID.add(Integer.valueOf(child.getKey()) + 1);
+                        }
+
+                        Chip checkedChip = null;
+                        for (Chip c : chipList) {
+                            if (c.isMarked()) {
+                                checkedChip = c;
+                            }
+                        }
+
+                        if (checkedChip == null) {
+                            Toast.makeText(DefaultActivity.this, "Selecione um tipo de risco!", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        float color = 0;
+                        switch (checkedChip.getId()) {
+                            case R.id.chip_fall:
+                                color = BitmapDescriptorFactory.HUE_RED;
+                                break;
+                            case R.id.chip_animals:
+                                color = BitmapDescriptorFactory.HUE_BLUE;
+                                break;
+                            case R.id.chip_vegetation:
+                                color = BitmapDescriptorFactory.HUE_GREEN;
+                                break;
+                            case R.id.chip_electricity:
+                                color = BitmapDescriptorFactory.HUE_ORANGE;
+                                break;
+                            case R.id.chip_assault:
+                                color = BitmapDescriptorFactory.HUE_MAGENTA;
+                                break;
+                        }
+
+                        int id;
+                        if (lastID.size() == 1) {
+                            id = lastID.get(0);
+                        } else {
+                            id = 0;
+                        }
+
+                        Warning w = new Warning(edTitle.getText().toString(),
+                                edDescription.getText().toString(),
+                                color,
+                                latLng.latitude,
+                                latLng.longitude);
+
+                        marks.child("risksCoords").child(Integer.toString(id)).setValue(w);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Toast.makeText(DefaultActivity.this, "Desculpe! Ocorreu um erro.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+        return markDialog;
     }
 }

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1093029053843",
+    "firebase_url": "https://tests-153713.firebaseio.com",
+    "project_id": "tests-153713",
+    "storage_bucket": "tests-153713.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093029053843:android:6b8d5f349a4a2aae",
+        "android_client_info": {
+          "package_name": "br.unicamp.prevencaodeacidentes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1093029053843-i29rncb6l2p99678g1da62vv5i1m53bs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.unicamp.prevencaodeacidentes",
+            "certificate_hash": "1cee3eea6e795dbc97642e39456b124fc175b34e"
+          }
+        },
+        {
+          "client_id": "1093029053843-ibhdbac06dum446gdpm7m4si6o2bp7m3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXXQ85eEaKRyQqJ5H2WARvq6z11Uq7UPU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093029053843-ibhdbac06dum446gdpm7m4si6o2bp7m3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
