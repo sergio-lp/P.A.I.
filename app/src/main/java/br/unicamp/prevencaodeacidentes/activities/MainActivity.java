@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                     });
                     if (sharedPref.getBoolean(SHOW_DIALOG, true)) {
                         mapDialog.show();
+                    } else {
+                        askLocationPermission();
                     }
                 }
             });
