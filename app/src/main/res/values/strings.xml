@@ -48,5 +48,5 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
-    <string name="map_info">A função \"Mapa de Risco\" permite aos responsáveis marcarem lugares que julgarem impróprios ou perigosos para brincadeiras.</string>
+    <string name="map_info">A função \"Mapa de Risco\" permite aos responsáveis marcarem lugares que julgarem impróprios ou perigosos para brincadeiras. Clique em um ponto do mapa para adicionar sua contribuição, ou clique em uma marcação já existente para ver mais informações.</string>
 </resources>

@@ -4,18 +4,19 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.text.SpannableString;
 import android.text.Spanned;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -49,27 +50,120 @@ import br.unicamp.prevencaodeacidentes.models.Chip;
 import br.unicamp.prevencaodeacidentes.models.Warning;
 
 public class DefaultActivity extends AppCompatActivity {
-    private ViewPager mPager;
-    private android.support.design.widget.FloatingActionButton mFAB;
-    private int mCurrentItem = 0;
-    private ProgressBar mProgressBar;
+    private ProgressBar mapBar;
+    private CoordinatorLayout mRoot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default);
 
-        mProgressBar = findViewById(R.id.map_progress_bar);
+        ImageButton btnBack = findViewById(R.id.btn_back);
         TextView tvTitle = findViewById(R.id.tv_title_default);
-        String title = getIntent().getExtras().getString("title");
+        final FloatingActionButton fab = findViewById(R.id.fab_default);
+        final ViewPager pager = findViewById(R.id.pager);
+        mapBar = findViewById(R.id.map_progress_bar);
+        mRoot = findViewById(R.id.default_root);
+
+        String title = getIntent().getStringExtra("title");
         tvTitle.setText(title);
 
         final List<Fragment> fragmentList = new ArrayList<>();
+        SupportMapFragment mapFragment;
+        DefaultFragment defaultFragment = null;
+        final QuizFragment quizFragment;
 
-        DefaultFragment fragment1 = new DefaultFragment();
-        Bundle b = new Bundle();
-        Spanned content = SpannableString.valueOf("Ainda indisponível");
+        if (title.equals("Mapa") || title.equals("Telefones")) {
+            mRoot.removeView(fab);
+            if (title.equals("Mapa")) {
+                mapFragment = new SupportMapFragment();
+                fragmentList.add(mapFragment);
+                prepareMapFragment(mapFragment);
+                mapBar.setVisibility(View.VISIBLE);
+            } else {
+                mRoot.removeView(mapBar);
+                defaultFragment = new DefaultFragment();
+                fragmentList.add(defaultFragment);
+            }
+        } else {
+            mRoot.removeView(mapBar);
+            defaultFragment = new DefaultFragment();
+            quizFragment = new QuizFragment();
+            fragmentList.add(defaultFragment);
+            fragmentList.add(quizFragment);
 
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (pager.getCurrentItem() == 0) {
+                        pager.setCurrentItem(pager.getCurrentItem() + 1);
+                    } else {
+                        long r = quizFragment.checkAnswers();
+                        if (r == 0) {
+                            fab.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    finish();
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+
+            pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    if (position == fragmentList.size() - 1) {
+                        fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_check_white_24dp));
+                    } else {
+                        fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_arrow_right_white_24dp));
+                    }
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
+        }
+
+        if (!title.equals("Mapa")) {
+            Spanned content = prepareContent(title);
+            Bundle args = new Bundle();
+            args.putCharSequence("content", content);
+            if (defaultFragment != null) {
+                defaultFragment.setArguments(args);
+            }
+        }
+
+        pager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return fragmentList.get(position);
+            }
+
+            @Override
+            public int getCount() {
+                return fragmentList.size();
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    private Spanned prepareContent(String title) {
+        Spanned content = Html.fromHtml("Ainda indisponível! Tente mais tarde.");
         switch (title) {
             case "Queimaduras":
                 content = Html.fromHtml("<font color='#ff1744'><b>•</b></font> Não deixe fósforos, isqueiros, e outras fontes de energia ao alcance dos pequenos." +
@@ -197,103 +291,8 @@ public class DefaultActivity extends AppCompatActivity {
                         "CIATox UNICAMP: <b><font color='#ff3b3e'>(19) 3521-7555</b></font>");
                 break;
         }
-        b.putCharSequence("content", content);
-        fragment1.setArguments(b);
 
-        mFAB = findViewById(R.id.fab_default);
-        mFAB.setVisibility(View.INVISIBLE);
-
-        fragmentList.add(fragment1);
-
-        if (!title.equals("Telefones") && !title.equals("Mapa")) {
-            final QuizFragment fragment3 = new QuizFragment();
-            fragmentList.add(fragment3);
-            mFAB.setVisibility(View.VISIBLE);
-            mFAB.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mCurrentItem == fragmentList.size() - 1) {
-                        long r = fragment3.checkAnswers();
-                        if (r == 0) {
-                            mFAB.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    finish();
-                                }
-                            });
-                        }
-                    } else {
-                        mCurrentItem++;
-                        mPager.setCurrentItem(mCurrentItem);
-                    }
-                }
-            });
-        }
-
-        if (title.equals("Mapa")) {
-            fragmentList.clear();
-            SupportMapFragment mapFragment = new SupportMapFragment();
-            fragmentList.add(mapFragment);
-            prepareMapFragment(mapFragment);
-            mProgressBar.setVisibility(View.VISIBLE);
-        }
-
-        ImageButton btnBack = findViewById(R.id.btn_back);
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-        mPager = findViewById(R.id.pager);
-        PagerAdapter mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-
-            @Override
-            public Fragment getItem(int position) {
-                return fragmentList.get(position);
-            }
-
-            @Override
-            public int getCount() {
-                return fragmentList.size();
-            }
-        };
-
-        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                mCurrentItem = position;
-                Drawable check = getResources().getDrawable(R.drawable.ic_check_white_24dp);
-                Drawable next = getResources().getDrawable(R.drawable.ic_arrow_right_white_24dp);
-
-                if (position == fragmentList.size() - 1) {
-                    mFAB.setImageDrawable(check);
-                } else {
-                    if (mFAB.getDrawable() != next) {
-                        mFAB.setImageDrawable(next);
-                    }
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
-
-        mPager.setAdapter(mPagerAdapter);
-        mCurrentItem = mPager.getCurrentItem();
-    }
-
-    @Override
-    public void finish() {
-        super.finish();
-        overridePendingTransition(R.anim.left_to_right, R.anim.left_to_right_exit);
+        return content;
     }
 
     private void prepareMapFragment(SupportMapFragment mapFragment) {
@@ -310,7 +309,26 @@ public class DefaultActivity extends AppCompatActivity {
                     }
                 });
 
-                final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+                FirebaseDatabase firebase = FirebaseDatabase.getInstance();
+                final DatabaseReference database = firebase.getReference();
+                DatabaseReference connectedRef = firebase.getReference(".info/connected");
+                connectedRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        boolean connected = dataSnapshot.getValue(Boolean.class);
+                        if (!connected) {
+                            Toast.makeText(DefaultActivity.this, "Verifique sua conexão ou tente mais tarde", Toast.LENGTH_SHORT).show();
+                            mapBar.setVisibility(View.INVISIBLE);
+                        } else {
+                            mapBar.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
 
                 ValueEventListener eventListener = new ValueEventListener() {
                     @Override
@@ -325,12 +343,14 @@ public class DefaultActivity extends AppCompatActivity {
                             }
                         }
 
-                        mProgressBar.setVisibility(View.INVISIBLE);
+                        mapBar.setVisibility(View.INVISIBLE);
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                         Toast.makeText(DefaultActivity.this, "Desculpe! Ocorreu um erro.", Toast.LENGTH_SHORT).show();
+                        Log.d("Firebase Connection", "Could not connect");
+                        mapBar.setVisibility(View.INVISIBLE);
                     }
                 };
 
@@ -368,7 +388,7 @@ public class DefaultActivity extends AppCompatActivity {
 
         AlertDialog.Builder markDialog = new AlertDialog.Builder(DefaultActivity.this);
         View dialog = LayoutInflater.from(DefaultActivity.this)
-                .inflate(R.layout.view_new_mark_dialog, mPager, false);
+                .inflate(R.layout.view_new_mark_dialog, mRoot, false);
         markDialog.setView(dialog);
 
         final EditText edTitle = dialog.findViewById(R.id.ed_title);
@@ -459,7 +479,20 @@ public class DefaultActivity extends AppCompatActivity {
                                 latLng.latitude,
                                 latLng.longitude);
 
-                        marks.child("risksCoords").child(Integer.toString(id)).setValue(w);
+                        marks.child("risksCoords").child(Integer.toString(id)).setValue(w, new DatabaseReference.CompletionListener() {
+                            @Override
+                            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                String notif = "";
+                                if (databaseError != null) {
+                                    notif = "Cheque sua conexão ou tente mais tarde";
+                                } else if (databaseReference.toString() != null) {
+                                    notif = "Obrigado! Sua marcação foi salva.";
+                                } else {
+                                    notif = "Cheque sua conexão com a internet!";
+                                }
+                                Snackbar.make(mRoot, notif, Snackbar.LENGTH_LONG).show();
+                            }
+                        });
                     }
 
                     @Override
@@ -471,5 +504,11 @@ public class DefaultActivity extends AppCompatActivity {
         });
 
         return markDialog;
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.left_to_right, R.anim.left_to_right_exit);
     }
 }
